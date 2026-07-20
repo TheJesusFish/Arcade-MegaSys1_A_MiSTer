@@ -1,7 +1,7 @@
 <misterromdescription>
     <name>Plus Alpha</name>
     <setname>plusalph</setname>
-    <rbf>megasys1_a</rbf>
+    <rbf>Megasys1_A</rbf>
     <mameversion>0253</mameversion>
     <year>1989</year>
     <manufacturer>Jaleco</manufacturer>
@@ -10,7 +10,7 @@
     <rotation>Vertical (CCW)</rotation>
     <region>Japan</region>
 
-    <switches default="FF,3F,7F">
+    <switches default="FF,BF,7F">
         <!-- DSW1 -->
         <dip name="Coin A" bits="0,2" ids="Free Play,1/4,2/1,1/2,3/1,1/3,1/5,1/1"/>
         <dip name="Coin B" bits="3,5" ids="4/1,1/4,2/1,1/2,3/1,1/3,1/5,1/1"/>
