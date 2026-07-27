@@ -22,7 +22,7 @@
         <dip name="Allow Continue" bits="12" ids="Off,On"/>
         <dip name="Credits To Start (Vs)" bits="13" ids="2,1"/>
         <dip name="Credits To Continue (Vs)" bits="14" ids="2,1"/>
-        <dip name="Flip Screen" bits="7" ids="On,Off"/>
+        <dip name="Flip Screen" bits="15" ids="On,Off"/>
     </switches>
 
     <buttons names="Rotate Left,Rotate Right,-,-,P1 Start,P2 Start,Coin A,Coin B,Pause" default="A,B,X,Y,R,Start"/>
@@ -44,7 +44,7 @@
         <part>10</part>
     </rom>
 
-    <rom index="0" zip="soldam.zip" md5="None">
+    <rom index="0" zip="soldam.zip" md5="none">
         <!-- maincpu - starts at 0x0 -->
         <interleave output="16">
             <part name="2ver1j.bin" crc="45444b07" map="01"/>

@@ -12,7 +12,7 @@
 
     <switches default="FF,FF">
         <!-- DSW1 -->
-        <dip name="Coin A" bits="0,1" ids="Free Play,1/4,2/1,1/2,3/1,1/3,1/5,1/1"/>
+        <dip name="Coin A" bits="0,2" ids="Free Play,1/4,2/1,1/2,3/1,1/3,1/5,1/1"/>
         <dip name="Coin B" bits="3,5" ids="4/1,1/4,2/1,1/2,3/1,1/3,1/5,1/1"/>
         <dip name="Demo Sounds" bits="6" ids="On,Off"/>
         <dip name="Freeze Screen (Cheat)" bits="7" ids="On,Off"/>
@@ -44,7 +44,7 @@
         <part>10</part>
     </rom>
 
-    <rom index="0" zip="iganinju.zip|kazan.zip" md5="None">
+    <rom index="0" zip="iganinju.zip|kazan.zip" md5="none">
         <!-- maincpu - starts at 0x0 -->
         <interleave output="16">
             <part name="iga_02.bin" crc="bd00c280" map="01"/>

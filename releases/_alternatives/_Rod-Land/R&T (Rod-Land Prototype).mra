@@ -1,5 +1,5 @@
 <misterromdescription>
-    <name>R&T (Rod-Land Prototype)</name>
+    <name>R&amp;T (Rod-Land Prototype)</name>
     <setname>rittam</setname>
     <rbf>Megasys1_A</rbf>
     <mameversion>0254</mameversion>
@@ -42,7 +42,7 @@
         <part>10</part>
     </rom>
 
-    <rom index="0" zip="rittam.zip|rodland.zip" md5="None">
+    <rom index="0" zip="rittam.zip|rodland.zip" md5="none">
         <!-- maincpu - starts at 0x0 -->
         <interleave output="16">
             <part name="2.rom2" crc="93085af2" map="01"/>

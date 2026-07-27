@@ -45,7 +45,7 @@
         <part>10</part>
     </rom>
 
-    <rom index="0" zip="hachoo.zip" md5="None">
+    <rom index="0" zip="hachoo.zip" md5="none">
         <!-- maincpu - starts at 0x0 -->
         <interleave output="16">
             <part name="hacho02.rom" crc="49489c27" map="01"/>

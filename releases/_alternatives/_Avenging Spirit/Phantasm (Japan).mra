@@ -12,8 +12,8 @@
 
     <switches default="FF,FF">
         <!-- DSW1 -->
-        <dip name="Coin #1" bits="0,3" ids="Free Play,2/3,4/1,3/1,2/1,1/6,1/5,1/4,1/3,1/2,1/1"/>
-        <dip name="Coin #2" bits="4,7" ids="Free Play,2/3,4/1,3/1,2/1,1/6,1/5,1/4,1/3,1/2,1/1"/>
+        <dip name="Coin #1" bits="0,3" ids="Free Play,2/3,4/1,3/1,2/1,1/6,1/5,1/4,1/3,1/2,1/1" values="0,6,7,8,9,10,11,12,13,14,15"/>
+        <dip name="Coin #2" bits="4,7" ids="Free Play,2/3,4/1,3/1,2/1,1/6,1/5,1/4,1/3,1/2,1/1" values="0,6,7,8,9,10,11,12,13,14,15"/>
         <!-- DSW2 -->
         <dip name="Screen Flip" bits="8" ids="On,Off"/>
         <dip name="Demo Sound" bits="9" ids="On,Off"/>
@@ -43,7 +43,7 @@
         <part>10</part>
     </rom>
 
-    <rom index="0" zip="phantasm.zip|avspirit.zip" md5="None">
+    <rom index="0" zip="phantasm.zip|avspirit.zip" md5="none">
         <!-- maincpu - starts at 0x0 -->
         <interleave output="16">
             <part name="phntsm02.bin" crc="d96a3584" map="01"/>

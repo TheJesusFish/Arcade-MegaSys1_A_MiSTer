@@ -44,7 +44,7 @@
         <part>10</part>
     </rom>
 
-    <rom index="0" zip="plusalph.zip" md5="None">
+    <rom index="0" zip="plusalph.zip" md5="none">
         <!-- maincpu - starts at 0x0 -->
         <interleave output="16">
             <part name="pa-rom2.bin" crc="33244799" map="01"/>

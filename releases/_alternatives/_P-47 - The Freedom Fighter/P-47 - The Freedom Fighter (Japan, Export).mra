@@ -41,7 +41,7 @@
         <part>10</part>
     </rom>
 
-    <rom index="0" zip="p47je.zip|p47.zip" md5="None">
+    <rom index="0" zip="p47je.zip|p47.zip" md5="none">
         <!-- maincpu - starts at 0x0 len 0x40000 -->
         <interleave output="16">
             <part name="export_p-47_3.rom2" crc="37185412" map="01"/>

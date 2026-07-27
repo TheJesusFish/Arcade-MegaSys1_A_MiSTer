@@ -44,7 +44,7 @@
         <part>10</part>
     </rom>
 
-    <rom index="0" zip="kazan.zip" md5="None">
+    <rom index="0" zip="kazan.zip" md5="none">
         <!-- maincpu - starts at 0x0 -->
         <interleave output="16">
             <part name="kazan.2" crc="072aa3d6" map="01"/>

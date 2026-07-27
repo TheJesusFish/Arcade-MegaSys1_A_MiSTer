@@ -407,7 +407,7 @@ wire pll_locked;
 
 wire clk_sys;
 wire turbo_68k = status[15];
-reg  clk_1_75M,clk_3_5M,clk_4M,clk_6M,clk_cpu_p,clk_cpu_s;
+reg  clk_3_5M,clk_4M,clk_6M,clk_cpu_p,clk_cpu_s;
 
 wire clk_72M;
 
@@ -428,7 +428,6 @@ reg  [7:0] clk_cpu_count;
 reg  [7:0] clk12_count;
 reg  [7:0] clk6_count;
 reg  [7:0] clk4_count;
-reg  [7:0] clk3_5_count;
 reg  [7:0] clk1_75_count;
 
 always @ (posedge clk_sys) begin
@@ -472,33 +471,7 @@ always @ (posedge clk_sys) begin
         clk_cpu_count <= clk_cpu_count + 7;
     end
 
-    // M = 7 / N = 144
-//    clk_3_5M <= 0;
-//    if ( clk3_5_count > 143 ) begin
-//        clk_3_5M <= 1;
-//        clk3_5_count <= clk3_5_count - 136;
-//    end else begin
-//        clk3_5_count <= clk3_5_count + 7;
-//    end
-
-//    clk_3_5M <= ( clk3_5_count == 0 );
-//    if ( clk3_5_count == 19 ) begin  // 3.6
-//        clk3_5_count <= 0;
-//    end else if ( pause_cpu == 0 ) begin
-//        clk3_5_count <= clk3_5_count + 1;
-//    end
-
-    // M = 6 / N = 247
-//    clk_1_75M <= 0;
-//    if ( clk1_75_count > 246 ) begin
-//        clk_1_75M <= 1;
-//        clk1_75_count <= clk1_75_count - 240;
-//    end else begin
-//        clk1_75_count <= clk1_75_count + 6;
-//    end
-
     clk_3_5M <= ( clk1_75_count == 0 || clk1_75_count == 20 );
-    clk_1_75M <= ( clk1_75_count == 0 );
     if ( clk1_75_count == 39 ) begin  // 1.8
         clk1_75_count <= 0;
     end else if ( pause_cpu == 0 ) begin
@@ -1439,27 +1412,19 @@ wire        ym2151_irq_n;
 
 assign      AUDIO_S = 1;
 
-jt51 ym2151
+megasys1_opm ym2151
 (
     .rst      ( reset | soft_reset ), // reset
     .clk      ( clk_sys            ), // main clock
     .cen      ( clk_3_5M           ),
-    .cen_p1   ( clk_1_75M          ), // 1.75mhz, half clock
-    .cs_n     ( 0                  ), // chip select
+    .cs_n     ( 1'b0               ), // chip select
     .wr_n     ( ~ym2151_w          ), // write
     .a0       ( ym2151_addr        ),
     .din      ( ym2151_din         ), // data in
     .dout     ( ym2151_dout        ), // data out ym2151_dout
-    .ct1      (                    ),
-    .ct2      (                    ),
     .irq_n    ( ym2151_irq_n       ),
-    // Low resolution output (same as real chip)
-    .sample   (                    ), // marks new output sample
     .left     ( ym_left            ),
-    .right    ( ym_right           ),
-    // Full resolution output
-    .xleft    (                    ),
-    .xright   (                    )
+    .right    ( ym_right           )
 );
 
 reg   [7:0] oki0_din;

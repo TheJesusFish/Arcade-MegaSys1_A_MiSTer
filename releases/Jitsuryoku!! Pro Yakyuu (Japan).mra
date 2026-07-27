@@ -17,9 +17,9 @@
         <dip name="Demo Sounds" bits="6" ids="On,Off"/>
         <dip name="Unused" bits="7" ids="On,Off"/>
         <!-- DSW2 -->
-        <dip name="2 Player Innings per Credit" bits="7" ids="3,2"/>
-        <dip name="Difficulty for Catching Ball" bits="8" ids="Hard,Normal"/>
-        <dip name="Franchise (Increase Batting Power)" bits="9,13" ids="Bu,O,H,F,Br,L,T,W,S,C,D,G,Normal"/>
+        <dip name="2 Player Innings per Credit" bits="8" ids="3,2"/>
+        <dip name="Difficulty for Catching Ball" bits="9" ids="Hard,Normal"/>
+        <dip name="Franchise (Increase Batting Power)" bits="10,13" ids="Bu,O,H,F,Br,L,T,W,S,C,D,G,Normal" values="3,4,5,6,7,8,9,10,11,12,13,14,15"/>
         <dip name="Scroll Is Based On" bits="14" ids="The Baseball Itself,Shadow of Baseball"/>
         <dip name="Flip Screen" bits="15" ids="On,Off"/>
     </switches>
@@ -43,7 +43,7 @@
         <part>10</part>
     </rom>
 
-    <rom index="0" zip="jitsupro.zip" md5="None">
+    <rom index="0" zip="jitsupro.zip" md5="none">
         <!-- maincpu - starts at 0x0 -->
         <interleave output="16">
             <part name="jp_2.bin" crc="5d842ff2" map="01"/>
