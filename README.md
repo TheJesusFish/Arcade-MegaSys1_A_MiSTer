@@ -1,53 +1,11 @@
 
 # Jaleco Mega System 1 A FPGA Implementation
 
-FPGA compatible core of Jaleco's Mega System 1 A (P-47 based) arcade hardware for [**MiSTerFPGA**](https://github.com/MiSTer-devel/Main_MiSTer/wiki) written by [**Erin Olafson**] with assistance from [**atrac17**](https://github.com/atrac17). Verified against a authentic P-47: The Freedom Fighter PCB purchased by [**atrac17**](https://github.com/atrac17).
+FPGA compatible core of Jaleco's Mega System 1 A (P-47 based) arcade hardware for [**MiSTerFPGA**](https://github.com/MiSTer-devel/Main_MiSTer/wiki) written by [**Erin Olafson**] with assistance from [**atrac17**](https://github.com/atrac17). Verified against a authentic P-47: The Freedom Fighter PCB purchased by [**atrac17**](https://github.com/atrac17). Maintenance and miscellaneous quality of life features added by TheJesusfish
 
-The intent is for this core to be a 1:1 playable implementation of the Mega System 1 A arcade hardware. Currently in **beta state**, this core is in active development. Additional Mega System 1 arcade titles will be in separate repositories (Mega System 1 Rev Z/B/C).
+The intent is for this core to be a 1:1 playable implementation of the Mega System 1 A arcade hardware. When it was last updated in early 2024, the core was labeled as **Beta / WIP**.
 
-## MD version (MegaSys1_AMD)
-
-Same emulation as the PCB-verified core (CPU, interrupt, video and sound timing unchanged), on the current MiSTer framework,
-with these additions:
-
-- **Save states**: 4 slots. Hold **L** on controller 1, then **Down** saves, **Up** loads, **Left/Right** change the slot.
-  Keyboard: **Alt-F1** saves, **F1** loads. Also in the OSD (slot, autoincrement, save, restore).
-- **High scores**: saved to the SD card from MAME's hiscore.dat for every game that has an entry. "Autosave Hiscores"
-  saves when the OSD opens; "Save Hiscores" saves now. Saved scores are restored once the game has set up its table.
-  Soldam's hiscore.dat entry never matches the game's RAM (MAME's plugin behaves the same), so Soldam saves nothing.
-- **Controls**: each controller drives its own player's Start and Coin; all Player 2 controls are on controller 2.
-  Defaults: Button 1 = A, Button 2 = B, Button 3 = X, Start = Start, Coin = Select, Pause = R, save states = L.
-  Button combinations: none are documented in the instruction and DIP sheets found for these games.
-  Kick Off's board has a single coin input (Coin 1), so only controller 1's Coin adds credits in that game.
-  Kick Off is joystick only here: keep its "Lever/Trackball" DIP on 8 Way Lever (the default).
-- **DIP switches**: as MAME 0.288, or the game's own Jaleco DIP sheet (Rod-Land, Kick Off, Shingen). Changes apply at
-  "Reset to apply" and do not reset the core.
-- **Games added**: P-47 (World, Freedom Fighter), Kick Off - Jaleco Cup, Shingen Samurai-Fighter / Takeda Shingen,
-  Hachoo! (World set 2, Japan), Iga Ninjyutsuden (bootleg), The Lord of King (bootlegs), Saint Dragon (bootleg),
-  Rod-Land (Japan bootlegs). `releases/` holds the MAME parents, `releases/_alternatives/` every clone.
-- Plus Alpha starts vertical and upright on HDMI (OSD "Orientation" for horizontal); the earlier vertical mode was upside down.
-- Video Settings: the H/V-sync position and width adjustments now move in the direction shown and keep a steady sync in
-  Native and NTSC refresh (some settings used to stop vertical sync). A Refresh Rate change takes effect at the next
-  vertical sync, so no frame runs long while switching. The "Video Mode NTSC/PAL" entry did nothing and is gone:
-  composite / S-Video encoding comes from MiSTer.ini (`vga_mode`, `ntsc_mode`; both refresh rates are NTSC-rate).
-- Clone MRAs name the parent ZIP as a fallback (e.g. `rodlandj.zip|rodland.zip`), so split and merged ROM sets work.
-
-| Game | Button 1 | Button 2 | Button 3 | Button names from |
-|------|----------|----------|----------|-------------------|
-| P-47 | Machine Gun | Special Weapon | - | va7deo MRAs |
-| Kick Off | Button 1 | Button 2 | - | MAME (no game document names them) |
-| Shingen | Attack Left | Attack Right | Jump | Jaleco instruction sheet |
-| Ninja Kazan | Attack | Jump | - | va7deo MRAs |
-| The Astyanax | Attack | Jump | Thunder Attack | va7deo MRAs |
-| Hachoo! | Attack | Jump | - | va7deo MRAs |
-| Jitsuryoku!! Pro Yakyuu | Button 1 | Button 2 | Button 3 | MAME (no game document names them) |
-| Plus Alpha | Hyper Shot | Hyper Laser Beam | - | va7deo MRAs |
-| Saint Dragon | Shot 1 | Shot 2 | - | va7deo MRAs |
-| Rod-Land | Rod | Ladder | - | va7deo MRAs |
-| Phantasm | Attack | Jump | - | va7deo MRAs |
-| E.D.F. (prototype) | Shot | Deploy Drone | - | va7deo MRAs |
-| In Your Face | Pass / Change Player | Shoot/Steal | Pass Target | MAME (Buttons 1, 3), va7deo MRAs (Button 2) |
-| Soldam | Rotate Left | Rotate Right | - | va7deo MRAs |
+This version of the core appends `[MD]` to the end of MRA names so that it can live alongside the legacy core.
 
 <br>
 <p align="center">
@@ -222,4 +180,3 @@ High-score data comes from MAME's `plugins/hiscore/hiscore.dat` (MAME 0.288); RO
 |Player 1|Player 2|
 |--|--|
 |<table> <tr><th>Functions</th><th>Keymap</th></tr><tr><td>P1 Up</td><td>Up</td></tr><tr><td>P1 Down</td><td>Down</td></tr><tr><td>P1 Left</td><td>Left</td></tr><tr><td>P1 Right</td><td>Right</td></tr><tr><td>P1 Bttn 1</td><td>L-Ctrl</td></tr><tr><td>P1 Bttn 2</td><td>L-Alt</td></tr><tr><td>P1 Bttn 3</td><td>Space</td></tr><tr><td>P1 Bttn 4</td><td>L-Shift</td></tr> </table> | <table> <tr><th>Functions</th><th>Keymap</th></tr><tr><td>P2 Up</td><td>R</td></tr><tr><td>P2 Down</td><td>F</td></tr><tr><td>P2 Left</td><td>D</td></tr><tr><td>P2 Right</td><td>G</td></tr><tr><td>P2 Bttn 1</td><td>A</td></tr><tr><td>P2 Bttn 2</td><td>S</td></tr><tr><td>P2 Bttn 3</td><td>Q</td></tr><tr><td>P2 Bttn 4</td><td>W</td></tr> </table>|
-
