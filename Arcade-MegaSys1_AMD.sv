@@ -59,7 +59,8 @@ assign BUTTONS = 0;
 // 0         1         2         3          4         5         6   
 // 01234567890123456789012345678901 23456789012345678901234567890123
 // 0123456789ABCDEFGHIJKLMNOPQRSTUV 0123456789ABCDEFGHIJKLMNOPQRSTUV
-// X  XXXXXXXXXXX     X X XXXXXXXXX XXXXXXXXXXXXXXXXXX      XXXXXXXX
+// X  XXXX XXX X  X   XXX  XXXXXXXX XXXXXXXXXXXXXXXXXX      XXXXXXXX
+// Bits 64-70: save state and hiscore options.
 
 wire [1:0] aspect_ratio = status[9:8];
 // Plus Alpha is the only vertical game: it rotates unless Orientation is set to Horz.
@@ -68,13 +69,6 @@ wire       orientation  = ~vertical_game | status[3];
 wire [2:0] scan_lines   = status[6:4];
 reg        refresh_mod;
 reg        new_vmode;
-
-always @(posedge clk_sys) begin
-    if (refresh_mod != status[19]) begin
-        refresh_mod <= status[19];
-        new_vmode <= ~new_vmode;
-    end
-end
 
 wire [3:0] hs_offset = status[27:24];
 wire [3:0] vs_offset = status[31:28];
@@ -96,7 +90,6 @@ localparam CONF_STR = {
     "P1O46,Scandoubler Fx,None,HQ2x,CRT 25%,CRT 50%,CRT 75%,CRT 100%;",
     "P1OA,Force Scandoubler,Off,On;",
     "P1-;",
-    "P1O7,Video Mode,NTSC,PAL;",
     "P1OJ,Refresh Rate,Native,NTSC;",
     "P1-;",
     "P1OOR,H-sync Pos Adj,0,1,2,3,4,5,6,7,-8,-7,-6,-5,-4,-3,-2,-1;",
@@ -589,6 +582,16 @@ reg [3:0] vt_por = 4'd0;
 always @ ( posedge clk_sys ) begin
     if ( ~pll_locked ) vt_por <= 4'd0;
     else if ( ~&vt_por ) vt_por <= vt_por + 4'd1;
+end
+
+// Refresh rate change applied as vsync starts, so no frame runs past the new total.
+reg vsync_d;
+always @(posedge clk_sys) begin
+    vsync_d <= vsync;
+    if (refresh_mod != status[19] && vsync && ~vsync_d) begin
+        refresh_mod <= status[19];
+        new_vmode <= ~new_vmode;
+    end
 end
 
 video_timing video_timing (

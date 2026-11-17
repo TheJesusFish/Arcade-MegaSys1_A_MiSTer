@@ -27,7 +27,9 @@ with these additions:
   Rod-Land (Japan bootlegs). `releases/` holds the MAME parents, `releases/_alternatives/` every clone.
 - Plus Alpha starts vertical and upright on HDMI (OSD "Orientation" for horizontal); the earlier vertical mode was upside down.
 - Video Settings: the H/V-sync position and width adjustments now move in the direction shown and keep a steady sync in
-  Native and NTSC refresh (some settings used to stop vertical sync).
+  Native and NTSC refresh (some settings used to stop vertical sync). A Refresh Rate change takes effect at the next
+  vertical sync, so no frame runs long while switching. The "Video Mode NTSC/PAL" entry did nothing and is gone:
+  composite / S-Video encoding comes from MiSTer.ini (`vga_mode`, `ntsc_mode`; both refresh rates are NTSC-rate).
 - Clone MRAs name the parent ZIP as a fallback (e.g. `rodlandj.zip|rodland.zip`), so split and merged ROM sets work.
 
 | Game | Button 1 | Button 2 | Button 3 | Button names from |
