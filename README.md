@@ -5,6 +5,44 @@ FPGA compatible core of Jaleco's Mega System 1 A (P-47 based) arcade hardware fo
 
 The intent is for this core to be a 1:1 playable implementation of the Mega System 1 A arcade hardware. Currently in **beta state**, this core is in active development. Additional Mega System 1 arcade titles will be in separate repositories (Mega System 1 Rev Z/B/C).
 
+## MD version (MegaSys1_AMD)
+
+Same emulation as the PCB-verified core (CPU, interrupt, video and sound timing unchanged), on the current MiSTer framework,
+with these additions:
+
+- **Save states**: 4 slots. Hold **L** on controller 1, then **Down** saves, **Up** loads, **Left/Right** change the slot.
+  Keyboard: **Alt-F1** saves, **F1** loads. Also in the OSD (slot, autoincrement, save, restore).
+- **High scores**: saved to the SD card from MAME's hiscore.dat for every game that has an entry. "Autosave Hiscores"
+  saves when the OSD opens; "Save Hiscores" saves now. Saved scores are restored once the game has set up its table.
+  Soldam's hiscore.dat entry never matches the game's RAM (MAME's plugin behaves the same), so Soldam saves nothing.
+- **Controls**: each controller drives its own player's Start and Coin; all Player 2 controls are on controller 2.
+  Defaults: Button 1 = A, Button 2 = B, Button 3 = X, Start = Start, Coin = Select, Pause = R, save states = L.
+  Button combinations: none are documented in the instruction and DIP sheets found for these games.
+  Kick Off's board has a single coin input (Coin 1), so only controller 1's Coin adds credits in that game.
+- **DIP switches**: as MAME 0.288, or the game's own Jaleco DIP sheet (Rod-Land, Kick Off, Shingen). Changes apply at
+  "Reset to apply" and do not reset the core.
+- **Games added**: P-47 (World, Freedom Fighter), Kick Off - Jaleco Cup, Shingen Samurai-Fighter / Takeda Shingen,
+  Hachoo! (World set 2, Japan), Iga Ninjyutsuden (bootleg), The Lord of King (bootlegs), Saint Dragon (bootleg),
+  Rod-Land (Japan bootlegs). `releases/` holds the MAME parents, `releases/_alternatives/` every clone.
+- Plus Alpha starts vertical and upright on HDMI (OSD "Orientation" for horizontal); the earlier vertical mode was upside down.
+
+| Game | Button 1 | Button 2 | Button 3 | Button names from |
+|------|----------|----------|----------|-------------------|
+| P-47 | Machine Gun | Special Weapon | - | va7deo MRAs |
+| Kick Off | Button 1 | Button 2 | - | MAME (no game document names them) |
+| Shingen | Attack Left | Attack Right | Jump | Jaleco instruction sheet |
+| Ninja Kazan | Attack | Jump | - | va7deo MRAs |
+| The Astyanax | Attack | Jump | Thunder Attack | va7deo MRAs |
+| Hachoo! | Attack | Jump | - | va7deo MRAs |
+| Jitsuryoku!! Pro Yakyuu | Button 1 | Button 2 | Button 3 | MAME (no game document names them) |
+| Plus Alpha | Hyper Shot | Hyper Laser Beam | - | va7deo MRAs |
+| Saint Dragon | Shot 1 | Shot 2 | - | va7deo MRAs |
+| Rod-Land | Rod | Ladder | - | va7deo MRAs |
+| Phantasm | Attack | Jump | - | va7deo MRAs |
+| E.D.F. (prototype) | Shot | Deploy Drone | - | va7deo MRAs |
+| In Your Face | Pass/Block | Shoot/Steal | Pass Target | va7deo MRAs (Button 3: MAME) |
+| Soldam | Rotate Left | Rotate Right | - | va7deo MRAs |
+
 <br>
 <p align="center">
 <img width="" height="" src="https://github.com/va7deo/MegaSys1_A/assets/32810066/1fa22090-2ecc-451f-b977-a33e8ac41260">
@@ -31,16 +69,18 @@ The intent is for this core to be a 1:1 playable implementation of the Mega Syst
 
 ## External Modules
 
-| Module                                                                                | Function                                                               | Author                                         |
-|---------------------------------------------------------------------------------------|------------------------------------------------------------------------|------------------------------------------------|
-| [**fx68k**](https://github.com/ijor/fx68k)                                            | [**Motorola 68000 CPU**](https://en.wikipedia.org/wiki/Motorola_68000) | Jorge Cwik                                     |
-| [**fx68k**](https://github.com/ijor/fx68k)                                            | [**Motorola 68000 CPU**](https://en.wikipedia.org/wiki/Motorola_68000) | Jorge Cwik                                     |
-| [**IKAOPM**](https://github.com/ika-musume/IKAOPM)                                   | [**Yamaha YM2151**](https://en.wikipedia.org/wiki/Yamaha_YM2151)       | ika-musume                                     |
-| [**jt6295**](https://github.com/jotego/jt6295)                                        | [**OKI MSM6295**](https://dtsheet.com/doc/957023/oki-m6295)            | Jose Tejada                                    |
-| [**jt6295**](https://github.com/jotego/jt6295)                                        | [**OKI MSM6295**](https://dtsheet.com/doc/957023/oki-m6295)            | Jose Tejada                                    |
-| [**yc_out**](https://github.com/MikeS11/MiSTerFPGA_YC_Encoder)                        | [**Y/C Video Module**](https://en.wikipedia.org/wiki/S-Video)          | Mike Simone                                    |
-| [**mem**](https://github.com/MiSTer-devel/Arcade-Rygar_MiSTer/tree/master/src/mem)    | SDRAM Controller / Rom Downloader                                      | Josh Bassett, modified by Erin Olafson       |
-| [**core_template**](https://github.com/MiSTer-devel/Template_MiSTer)                  | MiSTer Framework Template                                              | sorgelig, modified by Erin Olafson / atrac17 |
+| Module | Function | Author | Source / commit | License |
+|--------|----------|--------|-----------------|---------|
+| [**fx68k**](https://github.com/ijor/fx68k) | [**Motorola 68000 CPU**](https://en.wikipedia.org/wiki/Motorola_68000) (main and sound) | Jorge Cwik | `rtl/modules/fx68k`, ijor/fx68k @ 0602ee4 | GPL-3.0 |
+| [**IKAOPM**](https://github.com/ika-musume/IKAOPM) | [**Yamaha YM2151**](https://en.wikipedia.org/wiki/Yamaha_YM2151) | Raki (ika-musume) | `rtl/modules/ikaopm`, ika-musume/IKAOPM @ 08a5b40 | BSD-2-Clause |
+| [**jt6295**](https://github.com/jotego/jt6295) | [**OKI MSM6295**](https://dtsheet.com/doc/957023/oki-m6295) (×2) | Jose Tejada | `rtl/modules/jt6295`, jotego/jt6295 @ 65a5fe1 | GPL-3.0 |
+| [**Save states**](https://github.com/MiSTer-devel/Arcade-TaitoF2_MiSTer) | DDRAM state streamer, state bus, save/load UI | Martin Donlon (wickerwaka) | `rtl/savestate`, MiSTer-devel/Arcade-TaitoF2_MiSTer @ 9438df9 (unmodified) | GPL-2.0 |
+| [**mem**](https://github.com/MiSTer-devel/Arcade-Rygar_MiSTer/tree/master/src/mem) | SDRAM Controller / Rom Downloader | Josh Bassett, modified by Erin Olafson | `rtl/mem` | MIT |
+| [**Pause**](https://github.com/JimmyStones/Pause_MiSTer) | OSD / button pause and dim | Jim Gregory, modified by Erin Olafson | `rtl/pause.v` | GPL-3.0 |
+| [**core_template**](https://github.com/MiSTer-devel/Template_MiSTer) | MiSTer Framework Template (incl. yc_out by Mike Simone) | sorgelig and contributors | `sys/`, MiSTer-devel/Template_MiSTer @ e901a9f (unmodified) | GPL-3.0 |
+
+High-score data comes from MAME's `plugins/hiscore/hiscore.dat` (MAME 0.288); ROM layouts and DIP switches from MAME
+0.288 `-listxml` and, where they exist, the games' Jaleco DIP sheets.
 
 # Known Issues / Tasks
 

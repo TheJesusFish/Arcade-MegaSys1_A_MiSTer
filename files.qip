@@ -1,22 +1,53 @@
-set_global_assignment -name SDC_FILE Arcade-Megasys1_A.sdc
-set_global_assignment -name SYSTEMVERILOG_FILE Arcade-Megasys1_A.sv
-set_global_assignment -name QIP_FILE rtl/modules/fx68k/fx68k.qip
-set_global_assignment -name QIP_FILE rtl/modules/ikaopm/src/IKAOPM.qip
-set_global_assignment -name QIP_FILE rtl/modules/jt6295/hdl/jt6295.qip
-set_global_assignment -name VERILOG_FILE rtl/video_timing.v
-set_global_assignment -name VERILOG_FILE rtl/megasys1_opm.v
-set_global_assignment -name QIP_FILE sys/pll_q17.qip
-set_global_assignment -name QIP_FILE sys/pll_hdmi.qip
-set_global_assignment -name QIP_FILE sys/pll_cfg.qip
-set_global_assignment -name QIP_FILE sys/pll_audio.qip
-set_global_assignment -name QIP_FILE sys/sys.qip
+# fx68k: ijor/fx68k @ 0602ee4627b10f301298f2673d826cdd6baa9327 (Jorge Cwik, GPL-3.0)
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/modules/fx68k/fx68k.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/modules/fx68k/fx68kAlu.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/modules/fx68k/uaddrPla.sv
+# IKAOPM (YM2151): ika-musume/IKAOPM @ 08a5b40ed14418319287df450f7d4a523ddeed5e (Raki / ika-musume, BSD-2-Clause); docs/ not copied
+set_global_assignment -name VERILOG_FILE rtl/modules/ikaopm/src/IKAOPM.v
+set_global_assignment -name VERILOG_FILE rtl/modules/ikaopm/src/IKAOPM_modules/IKAOPM_acc.v
+set_global_assignment -name VERILOG_FILE rtl/modules/ikaopm/src/IKAOPM_modules/IKAOPM_eg.v
+set_global_assignment -name VERILOG_FILE rtl/modules/ikaopm/src/IKAOPM_modules/IKAOPM_lfo.v
+set_global_assignment -name VERILOG_FILE rtl/modules/ikaopm/src/IKAOPM_modules/IKAOPM_noise.v
+set_global_assignment -name VERILOG_FILE rtl/modules/ikaopm/src/IKAOPM_modules/IKAOPM_op.v
+set_global_assignment -name VERILOG_FILE rtl/modules/ikaopm/src/IKAOPM_modules/IKAOPM_pg.v
+set_global_assignment -name VERILOG_FILE rtl/modules/ikaopm/src/IKAOPM_modules/IKAOPM_primitives.v
+set_global_assignment -name VERILOG_FILE rtl/modules/ikaopm/src/IKAOPM_modules/IKAOPM_reg.v
+set_global_assignment -name VERILOG_FILE rtl/modules/ikaopm/src/IKAOPM_modules/IKAOPM_timer.v
+set_global_assignment -name VERILOG_FILE rtl/modules/ikaopm/src/IKAOPM_modules/IKAOPM_timinggen.v
+# jt6295 (OKI MSM6295): jotego/jt6295 @ 65a5fe118c89173350ce0fc20aa9d06927f46676 (Jose Tejada, GPL-3.0); interpolator not used
+set_global_assignment -name VERILOG_FILE rtl/modules/jt6295/hdl/jt6295.v
+set_global_assignment -name VERILOG_FILE rtl/modules/jt6295/hdl/jt6295_adpcm.v
+set_global_assignment -name VERILOG_FILE rtl/modules/jt6295/hdl/jt6295_timing.v
+set_global_assignment -name VERILOG_FILE rtl/modules/jt6295/hdl/jt6295_acc.v
+set_global_assignment -name VERILOG_FILE rtl/modules/jt6295/hdl/jt6295_ctrl.v
+set_global_assignment -name VERILOG_FILE rtl/modules/jt6295/hdl/jt6295_rom.v
+set_global_assignment -name VERILOG_FILE rtl/modules/jt6295/hdl/jt6295_serial.v
+set_global_assignment -name VERILOG_FILE rtl/modules/jt6295/hdl/jt6295_sh_rst.v
+set_global_assignment -name VERILOG_FILE rtl/modules/jt6295/hdl/jt12_interpol.v
+set_global_assignment -name VERILOG_FILE rtl/modules/jt6295/hdl/jt12_comb.v
+# pause: Jim Gregory's Pause_MiSTer (GPL-3.0) as modified in va7deo/MegaSys1_A
 set_global_assignment -name VERILOG_FILE rtl/pause.v
-set_global_assignment -name VERILOG_FILE rtl/chip_select.v
-set_global_assignment -name VERILOG_FILE rtl/mem/rom_controller.v
-set_global_assignment -name VERILOG_FILE rtl/mem/cache.v
+# save-state constants (core); must precede the save-state files, which use SS_DDR_BASE
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/megasys1_ss_pkg.sv
+# save states: MiSTer-devel/Arcade-TaitoF2_MiSTer rtl/ @ 9438df98f1ea826c5398db43587992def0124603 (Martin Donlon, GPL-2.0); unmodified, header added
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/savestate/ddram.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/savestate/savestates.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/savestate/memory_stream.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/savestate/savestate_ui.sv
+# mem: Josh Bassett (nullobject), MIT, from MiSTer-devel/Arcade-Rygar_MiSTer src/mem; adapted by va7deo (72 MHz timings, 64-bit bursts, cache, ROM controller)
 set_global_assignment -name VHDL_FILE rtl/mem/math.vhd
 set_global_assignment -name VHDL_FILE rtl/mem/segment.vhd
 set_global_assignment -name VHDL_FILE rtl/mem/download_buffer.vhd
 set_global_assignment -name VHDL_FILE rtl/mem/sdram.vhd
 set_global_assignment -name VHDL_FILE rtl/mem/dual_port_ram.vhd
-set_global_assignment -name VERILOG_FILE rtl/modules/jtframe/hdl/sound/jtframe_mixer.v
+set_global_assignment -name VERILOG_FILE rtl/mem/rom_controller.v
+set_global_assignment -name VERILOG_FILE rtl/mem/cache.v
+# core
+set_global_assignment -name VERILOG_FILE rtl/megasys1_mixer.v
+set_global_assignment -name VERILOG_FILE rtl/megasys1_opm.v
+set_global_assignment -name VERILOG_FILE rtl/video_timing.v
+set_global_assignment -name VERILOG_FILE rtl/chip_select.v
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/megasys1_ss.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/hiscore.sv
+set_global_assignment -name SDC_FILE Arcade-MegaSys1_AMD.sdc
+set_global_assignment -name SYSTEMVERILOG_FILE Arcade-MegaSys1_AMD.sv
