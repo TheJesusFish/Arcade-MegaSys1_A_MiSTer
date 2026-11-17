@@ -43,7 +43,7 @@
         <part>10</part>
     </rom>
 
-    <rom index="0" zip="p47j.zip" md5="none">
+    <rom index="0" zip="p47j.zip|p47.zip" md5="none">
         <!-- maincpu - starts at 0x0 -->
         <interleave output="16">
             <part name="p47j_3.bin" crc="11c655e5" map="01"/>

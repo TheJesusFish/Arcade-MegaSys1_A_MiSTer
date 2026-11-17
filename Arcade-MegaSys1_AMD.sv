@@ -584,9 +584,17 @@ always @ ( posedge clk_sys ) begin
     end
 end
 
+// Startup-only reset for the video timing counters, released after the PLL locks.
+reg [3:0] vt_por = 4'd0;
+always @ ( posedge clk_sys ) begin
+    if ( ~pll_locked ) vt_por <= 4'd0;
+    else if ( ~&vt_por ) vt_por <= vt_por + 4'd1;
+end
+
 video_timing video_timing (
     .clk(clk_sys),
     .clk_pix(clk_6M),
+    .reset(~&vt_por),
     .hc(hc),
     .vc(vc),
     .refresh_mod(refresh_mod),
@@ -1265,7 +1273,7 @@ always @ (posedge clk_sys) begin
                              m68kp_sys_cs      ? system :
                              m68kp_scr0_reg_cs ? m68kp_scr0_reg :
                              m68kp_scr1_reg_cs ? m68kp_scr1_reg :
-                             m68kp_scr1_reg_cs ? m68kp_scr2_reg :
+                             m68kp_scr2_reg_cs ? m68kp_scr2_reg :
                              m68kp_spr_ctrl_cs ? sprite_control :
                              16'h0000;
             end else begin
@@ -2312,9 +2320,9 @@ reg  [15:0] m68kp_scr2_reg_x;
 reg  [15:0] m68kp_scr2_reg_y;
 reg  [15:0] m68kp_scr2_reg_mode;
 
-wire m68kp_scr0_reg = ( m68kp_a[2:1] == 0 ) ? m68kp_scr0_reg_x : ( m68kp_a[2:1] == 1 ) ? m68kp_scr0_reg_y : m68kp_scr0_reg_mode;
-wire m68kp_scr1_reg = ( m68kp_a[2:1] == 0 ) ? m68kp_scr1_reg_x : ( m68kp_a[2:1] == 1 ) ? m68kp_scr1_reg_y : m68kp_scr1_reg_mode;
-wire m68kp_scr2_reg = ( m68kp_a[2:1] == 0 ) ? m68kp_scr2_reg_x : ( m68kp_a[2:1] == 1 ) ? m68kp_scr2_reg_y : m68kp_scr2_reg_mode;
+wire [15:0] m68kp_scr0_reg = ( m68kp_a[2:1] == 0 ) ? m68kp_scr0_reg_x : ( m68kp_a[2:1] == 1 ) ? m68kp_scr0_reg_y : m68kp_scr0_reg_mode;
+wire [15:0] m68kp_scr1_reg = ( m68kp_a[2:1] == 0 ) ? m68kp_scr1_reg_x : ( m68kp_a[2:1] == 1 ) ? m68kp_scr1_reg_y : m68kp_scr1_reg_mode;
+wire [15:0] m68kp_scr2_reg = ( m68kp_a[2:1] == 0 ) ? m68kp_scr2_reg_x : ( m68kp_a[2:1] == 1 ) ? m68kp_scr2_reg_y : m68kp_scr2_reg_mode;
 
 reg  [14:0] sprite_ram_addr;
 wire [15:0] sprite_ram_dout;

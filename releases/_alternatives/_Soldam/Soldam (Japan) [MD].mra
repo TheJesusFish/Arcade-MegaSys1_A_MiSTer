@@ -43,7 +43,7 @@
         <part>10</part>
     </rom>
 
-    <rom index="0" zip="soldamj.zip" md5="none">
+    <rom index="0" zip="soldamj.zip|soldam.zip" md5="none">
         <!-- maincpu - starts at 0x0 -->
         <interleave output="16">
             <part name="soldam2.bin" crc="c73d29e4" map="01"/>

@@ -43,7 +43,7 @@
         <part>10</part>
     </rom>
 
-    <rom index="0" zip="rodlandjb.zip" md5="none">
+    <rom index="0" zip="rodlandjb.zip|rodland.zip" md5="none">
         <!-- maincpu - starts at 0x0 -->
         <interleave output="16">
             <part name="rl19.bin" crc="028de21f" map="01"/>

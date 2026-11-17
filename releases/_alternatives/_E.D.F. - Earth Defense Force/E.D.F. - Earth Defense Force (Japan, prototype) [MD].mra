@@ -42,7 +42,7 @@
         <part>10</part>
     </rom>
 
-    <rom index="0" zip="edfp.zip" md5="none">
+    <rom index="0" zip="edfp.zip|edf.zip" md5="none">
         <!-- maincpu - starts at 0x0 -->
         <interleave output="16">
             <part name="2.rom2.27c010" crc="358a6ac3" map="01"/>

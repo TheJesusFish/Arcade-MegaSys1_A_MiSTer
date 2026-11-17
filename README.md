@@ -19,12 +19,16 @@ with these additions:
   Defaults: Button 1 = A, Button 2 = B, Button 3 = X, Start = Start, Coin = Select, Pause = R, save states = L.
   Button combinations: none are documented in the instruction and DIP sheets found for these games.
   Kick Off's board has a single coin input (Coin 1), so only controller 1's Coin adds credits in that game.
+  Kick Off is joystick only here: keep its "Lever/Trackball" DIP on 8 Way Lever (the default).
 - **DIP switches**: as MAME 0.288, or the game's own Jaleco DIP sheet (Rod-Land, Kick Off, Shingen). Changes apply at
   "Reset to apply" and do not reset the core.
 - **Games added**: P-47 (World, Freedom Fighter), Kick Off - Jaleco Cup, Shingen Samurai-Fighter / Takeda Shingen,
   Hachoo! (World set 2, Japan), Iga Ninjyutsuden (bootleg), The Lord of King (bootlegs), Saint Dragon (bootleg),
   Rod-Land (Japan bootlegs). `releases/` holds the MAME parents, `releases/_alternatives/` every clone.
 - Plus Alpha starts vertical and upright on HDMI (OSD "Orientation" for horizontal); the earlier vertical mode was upside down.
+- Video Settings: the H/V-sync position and width adjustments now move in the direction shown and keep a steady sync in
+  Native and NTSC refresh (some settings used to stop vertical sync).
+- Clone MRAs name the parent ZIP as a fallback (e.g. `rodlandj.zip|rodland.zip`), so split and merged ROM sets work.
 
 | Game | Button 1 | Button 2 | Button 3 | Button names from |
 |------|----------|----------|----------|-------------------|
@@ -40,7 +44,7 @@ with these additions:
 | Rod-Land | Rod | Ladder | - | va7deo MRAs |
 | Phantasm | Attack | Jump | - | va7deo MRAs |
 | E.D.F. (prototype) | Shot | Deploy Drone | - | va7deo MRAs |
-| In Your Face | Pass/Block | Shoot/Steal | Pass Target | va7deo MRAs (Button 3: MAME) |
+| In Your Face | Pass / Change Player | Shoot/Steal | Pass Target | MAME (Buttons 1, 3), va7deo MRAs (Button 2) |
 | Soldam | Rotate Left | Rotate Right | - | va7deo MRAs |
 
 <br>

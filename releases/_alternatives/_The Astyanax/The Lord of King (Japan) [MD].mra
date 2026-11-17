@@ -44,7 +44,7 @@
         <part>10</part>
     </rom>
 
-    <rom index="0" zip="lordofk.zip" md5="none">
+    <rom index="0" zip="lordofk.zip|astyanax.zip" md5="none">
         <!-- maincpu - starts at 0x0 -->
         <interleave output="16">
             <part name="lokj02.bin" crc="0d7f9b4a" map="01"/>

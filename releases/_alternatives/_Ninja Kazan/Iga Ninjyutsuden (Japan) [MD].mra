@@ -43,7 +43,7 @@
         <part>10</part>
     </rom>
 
-    <rom index="0" zip="iganinju.zip" md5="none">
+    <rom index="0" zip="iganinju.zip|kazan.zip" md5="none">
         <!-- maincpu - starts at 0x0 -->
         <interleave output="16">
             <part name="iga_02.bin" crc="bd00c280" map="01"/>

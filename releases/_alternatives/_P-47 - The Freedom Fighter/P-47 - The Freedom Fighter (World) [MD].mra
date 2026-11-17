@@ -43,7 +43,7 @@
         <part>10</part>
     </rom>
 
-    <rom index="0" zip="p47a.zip" md5="none">
+    <rom index="0" zip="p47a.zip|p47.zip" md5="none">
         <!-- maincpu - starts at 0x0 -->
         <interleave output="16">
             <part name="jaleco_export_p-47_3.rom2" crc="022e58b8" map="01"/>

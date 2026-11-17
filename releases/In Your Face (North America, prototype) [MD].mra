@@ -24,8 +24,8 @@
         <dip name="Flip Screen" bits="15" ids="Off,On" values="1,0"/>
     </switches>
 
-    <!-- button names: va7deo MRAs (Buttons 1-2), MAME 0.288 (Button 3) -->
-    <buttons names="Pass/Block,Shoot/Steal,Pass Target,Start,Coin,Pause,Save/Load" default="A,B,X,Start,Select,R,L"/>
+    <!-- button names: MAME 0.288 (Buttons 1, 3), va7deo MRAs (Button 2) -->
+    <buttons names="Pass / Change Player,Shoot/Steal,Pass Target,Start,Coin,Pause,Save/Load" default="A,B,X,Start,Select,R,L"/>
 
     <rom index="1">
         <part>0A</part>
