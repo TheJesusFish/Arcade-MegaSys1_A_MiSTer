@@ -56,22 +56,22 @@ with these additions:
 
 ## Supported Titles (Type-A)
 
-| Title                                                    | PCB<br>Number        | Encrypted<br>Program | MCU | Status                  | Released     |
-|----------------------------------------------------------|----------------------|----------------------|-----|-------------------------|--------------|
-| [**P-47: The Freedom Fighter**](FILLME)                  | MB8844<br><br>MB8843 | N/A                  | N/A | **Implemented**         | **20230701** |
-| [**Kick Off - Jaleco Cup**](FILLME)                      | MB8844               | N/A                  | N/A | **Implemented / W.I.P** | No           |
-| [**Shingen Samurai-Fighter / Takeda Shingen**](FILLME)   | MB8844               | Yes                  | N/A | **Implemented / W.I.P** | No           |
-| [**Ninja Kazan / Iga Ninjyutsuden**](FILLME)             | MB8845               | Yes                  | Yes | **Implemented**         | **20230923** |
-| [**The Astyanax / The Lord of King**](FILLME)            | MB8844<br><br>MB8845 | Yes                  | Yes | **Implemented**         | **20230701** |
-| [**Hachoo!**](FILLME)                                    | MB8845               | Yes                  | Yes | **Implemented**         | **20240101** |
-| [**Jitsuryoku!! Pro Yakyuu**](FILLME)                    | MBMO2A               | Yes                  | Yes | **Implemented**         | **20240106** |
-| [**Plus Alpha**](FILLME)                                 | MB8845               | Yes                  | Yes | **Implemented**         | **20240106** |
-| [**Saint Dragon**](FILLME)                               | MB8845               | Yes                  | Yes | **Implemented**         | **20230715** |
-| [**Rod-Land**](https://en.wikipedia.org/wiki/Rod_Land)   | MBMO2A<br><br>MB8845 | Yes                  | N/A | **Implemented**         | **20230513** |
-| [**Phantasm**](FILLME)                                   | MB8845               | Yes                  | N/A | **Implemented**         | **20230708** |
-| [**E.D.F: Earth Defense Force (Prototpe)**](FILLME)      | W.I.P                | Yes                  | N/A | **Implemented**         | **20240101** |
-| [**In Your Face (Prototpe)**](FILLME)                    | W.I.P                | Yes                  | N/A | **Implemented**         | **20240101** |
-| [**Soldam**](FILLME)                                     | W.I.P                | Yes                  | N/A | **Implemented**         | **20230519** |
+| Title                                                                                                       | PCB<br>Number        | Encrypted<br>Program | MCU | Status                       | Released     |
+|-------------------------------------------------------------------------------------------------------------|----------------------|----------------------|-----|------------------------------|--------------|
+| [**E.D.F: Earth Defense Force (Prototpe)**](https://en.wikipedia.org/wiki/Earth_Defense_Force_(video_game)) | W.I.P                | Yes                  | N/A | **Implemented**              | **20240101** |
+| **Hachoo!**                                                                                                 | MB8845               | Yes                  | Yes | **Implemented**              | **20240101** |
+| **In Your Face (Prototpe)**                                                                                 | W.I.P                | Yes                  | N/A | **Implemented**              | **20240101** |
+| **Jitsuryoku!! Pro Yakyuu**                                                                                 | MBMO2A               | Yes                  | Yes | **Implemented**              | **20240106** |
+| **Kick Off - Jaleco Cup**                                                                                   | MB8844               | N/A                  | N/A | **Implemented / Unverified** | **20261117** |
+| [**Ninja Kazan / Iga Ninjyutsuden**](https://en.wikipedia.org/wiki/Ninja_Kazan)                             | MB8845               | Yes                  | Yes | **Implemented**              | **20230923** |
+| [**P-47: The Freedom Fighter**](https://en.wikipedia.org/wiki/P-47:_The_Phantom_Fighter)                    | MB8844<br><br>MB8843 | N/A                  | N/A | **Implemented**              | **20230701** |
+| [**Phantasm**](https://en.wikipedia.org/wiki/Avenging_Spirit)                                               | MB8845               | Yes                  | N/A | **Implemented**              | **20230708** |
+| [**Plus Alpha**](https://en.wikipedia.org/wiki/Plus_Alpha)                                                  | MB8845               | Yes                  | Yes | **Implemented**              | **20240106** |
+| [**Rod-Land**](https://en.wikipedia.org/wiki/Rod_Land)                                                      | MBMO2A<br><br>MB8845 | Yes                  | N/A | **Implemented**              | **20230513** |
+| [**Saint Dragon**](https://en.wikipedia.org/wiki/Saint_Dragon)                                              | MB8845               | Yes                  | Yes | **Implemented**              | **20230715** |
+| [**Shingen Samurai-Fighter / Takeda Shingen**](https://en.wikipedia.org/wiki/Shingen_Samurai-Fighter)       | MB8844               | Yes                  | N/A | **Implemented / Unverified** | **20261117** |
+| [**Soldam**](https://en.wikipedia.org/wiki/Soldam)                                                          | W.I.P                | Yes                  | N/A | **Implemented**              | **20230519** |
+| [**The Astyanax / The Lord of King**](https://en.wikipedia.org/wiki/The_Astyanax)                           | MB8844<br><br>MB8845 | Yes                  | Yes | **Implemented**              | **20230701** |
 
 ## External Modules
 
